@@ -1,0 +1,1000 @@
+/* Variáveis de Cores */
+:root {
+    --white-color: #FFFFFF;
+    --dark-blue-color: #14172c;
+    --light-blue-color: #0173ff;
+    --section-padding-x: 14rem; /* Padding horizontal para o conteúdo dentro das seções */
+    --black-section-bg: #080808; /* Nova variável para a cor preta das seções */
+    --card-background: #1a1a1a; /* Fundo mais claro para os cards */
+    --card-border-radius: 12px;
+    /* Novas variáveis para cores dos botões sociais de contato */
+    --whatsapp-green: #25D366;
+    --instagram-gradient-start: #C13584; /* Mantendo o do Behance para o Instagram, ou usar gradiente */
+    --behance-blue: #053EFF; /* Azul Behance */
+    /* NOVAS VARIÁVEIS PARA O GRADIENTE DO FOOTER */
+    --footer-gradient-start: #007bff; /* Um tom de azul para o início do gradiente */
+    --footer-gradient-end: #0056cc; /* Um tom mais escuro de azul para o fim do gradiente */
+}
+
+/* Reset básico e tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+}
+
+html {
+    scroll-behavior: smooth; /* Adiciona rolagem suave para âncoras */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #080808; /* Fundo escuro */
+    color: var(--white-color); /* Texto branco padrão */
+    line-height: 1.6;
+    overflow-x: hidden; /* **CRÍTICO:** Evita rolagem horizontal indesejada */
+    width: 100vw; /* Garante que o body ocupe exatamente a largura do viewport */
+    position: relative; /* Para que elementos posicionados absolutamento dentro dele funcionem corretamente */
+}
+
+/* --- Header e Navbar --- */
+.header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0)); /* Gradiente para o header */
+    padding: 20px 0;
+    position: fixed; /* Fixa o header no topo */
+    width: 100%; /* Ocupa 100% da largura do viewport */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo na esquerda, menu na direita */
+    align-items: center;
+    max-width: 1400px; /* Largura máxima para o conteúdo da navbar */
+    margin: 0 auto; /* Centraliza a navbar */
+    padding-left: var(--section-padding-x); /* Aplica o padding aqui para o conteúdo da navbar */
+    padding-right: var(--section-padding-x); /* Aplica o padding aqui para o conteúdo da navbar */
+}
+
+
+.logo img {
+    height: 90px; /* Logo aumentada para 90px */
+    filter: brightness(0) invert(1); /* Deixa a logo branca para contrastar com o fundo escuro */
+    transition: height 0.3s ease; /* Transição suave no tamanho */
+}
+
+.nav-menu ul {
+    list-style: none; /* Remove marcadores de lista */
+    display: flex; /* Itens do menu em linha */
+}
+
+.nav-menu ul li {
+    margin-left: 40px; /* Espaçamento entre os itens do menu */
+}
+
+.nav-menu ul li a {
+    color: var(--white-color);
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-weight: 600; /* Semibold */
+    font-size: 1rem;
+    transition: color 0.3s ease, outline 0.3s ease, padding 0.3s ease;
+    padding: 5px 0; /* Padding inicial para criar espaço para o hover */
+    outline: 2px solid transparent; /* Outline transparente por padrão */
+    border-radius: 5px; /* Levemente arredondado para o outline */
+}
+
+.nav-menu ul li a:hover {
+    color: var(--white-color); /* Mantém a cor do texto branca no hover */
+    outline: 2px solid var(--light-blue-color); /* Outline azul claro no hover */
+    padding: 5px 10px; /* Adiciona padding lateral no hover */
+}
+
+/* Botão de menu para mobile (inicialmente escondido) */
+.menu-toggle {
+    display: none; /* Esconde em desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do botão hamburger */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* --- Seção Hero/Principal --- */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Mantém o alinhamento vertical centralizado */
+    background-image: url('../images/hero-bg.png');
+    background-size: cover; /* Cobre toda a área */
+    background-position: center center; /* Centraliza a imagem */
+    z-index: 1; /* Garante que o conteúdo fique acima do background */
+    width: 100%;
+    padding: 0;
+}
+
+/* Overlay escuro na imagem de fundo para melhor contraste do texto */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Escurece a imagem de fundo */
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.hero-content {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no texto para melhor legibilidade */
+    z-index: 2; /* Garante que o conteúdo fique sobre o overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens verticalmente dentro do hero-content */
+    width: 100%; /* Permite que o hero-content ocupe a largura disponível */
+    padding-left: var(--section-padding-x); /* Garante que o texto não cole na borda esquerda */
+    padding-right: var(--section-padding-x); /* Garante que o texto não cole na borda direita */
+    text-align: center; /* Centraliza o texto dentro do hero-content */
+}
+
+
+.hero-title {
+    font-size: 4.5rem; /* Tamanho grande para "Olá, eu sou o Fabrício." */
+    font-weight: 800; /* Extra bold */
+    color: var(--white-color);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.hero-title .highlight {
+    color: var(--light-blue-color); /* Cor de destaque para o nome */
+}
+
+.hero-subtitle {
+    font-size: 2rem; /* Tamanho para "Editor de vídeos e Motion designer" */
+    font-weight: 500;
+    color: var(--white-color);
+}
+
+/* --- Estilo Geral para Títulos de Seção (h2) --- */
+/* Aplicado a "Sobre mim", "Experiências", "Contato" */
+section h2 {
+    font-size: 3rem; /* Tamanho grande como o "Sobre mim" */
+    font-weight: 800;
+    color: var(--light-blue-color); /* Cor azul claro como o "Sobre mim" */
+    margin-bottom: 40px; /* Espaçamento abaixo do título */
+    text-align: center; /* Centraliza o título */
+    width: 100%; /* Garante que o título ocupe a largura total */
+}
+
+/* --- Seções de Conteúdo (SOBRE MIM, EXPERIÊNCIAS, CONTATO) --- */
+section {
+    padding-top: 80px; /* Espaçamento superior */
+    padding-bottom: 80px; /* Espaçamento inferior */
+    min-height: 80vh; /* Garante que a seção tenha uma altura mínima */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Aplica o padding horizontal global para todas as seções */
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+}
+
+/* Configuração de cor de fundo padrão para seções */
+section:nth-of-type(even) { /* Seções pares (ex: Experiências se for a 2ª) */
+    background-color: var(--black-section-bg);
+}
+
+section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
+    background-color: var(--black-section-bg); /* Todas as seções agora serão pretas */
+}
+
+/* Estilo específico para a seção SOBRE MIM com Grid */
+.about-section.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Coluna para imagem (1 parte), e para o conteúdo da direita (2 partes) */
+    grid-template-areas:
+        "image content"; /* A imagem na primeira coluna, todo o conteúdo da direita na segunda */
+    gap: 2rem; /* Espaçamento entre as células do grid */
+    align-items: start; /* Alinha o conteúdo ao topo das células */
+    background-color: var(--black-section-bg);
+    text-align: left; /* Alinhamento de texto padrão para esta seção */
+    /* O padding-left/right já é aplicado pela regra generalista de 'section' */
+}
+
+.about-section.grid-layout .about-image {
+    grid-area: image; /* Posiciona no grid */
+    border-radius: 28px; /* Arredondamento menor para a imagem */
+    overflow: hidden; /* Garante que a imagem não vaze se tiver border-radius */
+    max-width: 400px; /* Largura máxima para a imagem */
+    width: 100%;
+    margin: 0 auto; /* Centraliza a imagem horizontalmente dentro de sua célula */
+    align-self: start; /* Alinha a imagem ao topo de sua célula */
+    border: 3px solid var(--white-color); /* Borda branca na foto */
+}
+
+.about-section.grid-layout .about-image img {
+    display: block;
+    width: 100%;
+    height: auto; /* Ajusta a altura automaticamente */
+    border-radius: 24px; /* Arredonda a imagem interna também, um pouco menos que o container */
+    object-fit: cover; /* Garante que a imagem cubra o container sem distorcer */
+    object-position: center; /* Centraliza a imagem dentro do container */
+}
+
+.about-section.grid-layout .about-content-right {
+    grid-area: content; /* Ocupa a área definida no grid principal */
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna para empilhar os elementos */
+    grid-template-rows: auto auto auto; /* Linhas para about-text, skills-section e softwares-section */
+    grid-template-areas:
+        "about-main"
+        "details-row"; /* about-details-grid agora será a "details-row" */
+    gap: 2rem; /* Espaçamento entre as subseções */
+}
+
+.about-section.grid-layout .about-text {
+    grid-area: about-main; /* Posiciona o texto "Sobre mim" */
+}
+
+/* Novo estilo para as etiquetas de idioma */
+.lang-label {
+    color: var(--light-blue-color); /* Para que a etiqueta tenha a cor de destaque */
+    font-size: 0.9rem; /* Um pouco menor que o texto principal */
+    margin-bottom: 5px; /* Espaçamento abaixo da etiqueta */
+    display: inline-block; /* Para que margin-bottom funcione */
+}
+
+.about-section.grid-layout .about-details-grid {
+    grid-area: details-row; /* Posiciona o grid de detalhes */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para Habilidades e Softwares */
+    gap: 2rem; /* Espaçamento entre Habilidades e Softwares */
+}
+
+.about-section.grid-layout .skills {
+    /* grid-area já definido no about-details-grid */
+}
+
+.about-section.grid-layout .softwares {
+    /* grid-area já definido no about-details-grid */
+}
+
+/* O h2 da seção "Sobre mim" usará o estilo geral de h2 */
+.about-section.grid-layout .about-text h2 {
+    text-align: left; /* Alinha o título "Sobre mim" à esquerda */
+}
+
+
+.about-section.grid-layout .lang-text {
+    margin-bottom: 20px;
+}
+
+.about-section.grid-layout .about-text p {
+    font-size: 1.1rem; /* Consistência com o tamanho do texto */
+    margin-bottom: 10px;
+    max-width: none; /* Remove a restrição de largura máxima do parágrafo */
+}
+
+
+.about-section.grid-layout h3 {
+    color: var(--light-blue-color);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-align: left; /* Alinha os títulos das habilidades e softwares à esquerda */
+}
+
+.about-section.grid-layout .skills ul,
+.about-section.grid-layout .softwares ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+    text-align: left; /* Alinha os itens das listas à esquerda */
+}
+
+/* Estilo para os itens de habilidades (com outline e hover de botão) */
+.about-section.grid-layout .skills ul li {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    display: inline-block; /* Crucial para aplicar padding e borda como um bloco */
+    border: 1px solid var(--white-color); /* Outline branco de 1px */
+    padding: 8px 15px; /* Espaçamento interno como um botão */
+    border-radius: 20px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease, filter 0.3s ease, transform 0.2s ease; /* Transição suave */
+    cursor: default; /* Não é um botão clicável, então cursor padrão */
+    color: var(--white-color); /* Garante que o texto seja branco */
+    margin-right: 10px; /* Espaçamento entre os "botões" */
+    margin-bottom: 10px; /* Espaçamento abaixo dos "botões" */
+}
+
+.about-section.grid-layout .skills ul li:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo sutil branco no hover */
+    filter: brightness(1.2); /* Deixa o texto e a borda um pouco mais claros */
+    transform: translateY(-2px); /* Efeito de levantar no hover */
+}
+
+
+.about-section.grid-layout .software-icons {
+    display: flex;
+    gap: 15px; /* Espaçamento entre os ícones de software */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os ícones quebrem a linha em telas menores */
+}
+
+.about-section.grid-layout .software-icons li img {
+    height: 35px; /* Ajuste o tamanho dos ícones */
+    width: auto;
+}
+
+
+/* Estilo para as seções EXPERIÊNCIAS e CONTATO (mantido centralizado) */
+.experience-section, .contact-section {
+    align-items: center; /* Mantém o conteúdo centralizado */
+    text-align: center; /* Mantém o texto centralizado */
+}
+
+/* **AJUSTES PARA O SWIPER** */
+.experience-slider {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima para o carrossel */
+    margin-top: 20px;
+    padding-bottom: 50px; /* Espaço para a paginação */
+    position: relative; /* Para posicionar botões de navegação e paginação */
+}
+
+.experience-card {
+    background-color: var(--card-background); /* Fundo do card */
+    border-radius: var(--card-border-radius);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Alinhamento do texto dentro do card */
+    min-height: 380px; /* Adiciona uma altura mínima para os cards */
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-icon-wrapper {
+    background-color: var(--light-blue-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Evita que o ícone diminua */
+}
+
+.card-main-icon {
+    font-size: 28px;
+    color: var(--white-color);
+}
+
+.card-tools {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que os ícones das ferramentas quebrem a linha */
+    justify-content: flex-end; /* Alinha as ferramentas à direita */
+}
+
+.card-tools img {
+    height: 30px; /* Tamanho dos ícones das ferramentas */
+    width: auto;
+}
+
+.card-content {
+    display: flex; /* Transforma o card-content em flex container */
+    flex-direction: column; /* Organiza os itens em coluna */
+    flex-grow: 1; /* Permite que o card-content ocupe o espaço disponível */
+}
+
+.card-title {
+    font-size: 1.6rem;
+    color: var(--white-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Faz o parágrafo ocupar o espaço restante, empurrando o botão para baixo */
+}
+
+.behance-button, .instagram-button { /* Aplicado a ambos os botões */
+    display: inline-flex; /* Para alinhar o ícone e o texto */
+    align-items: center;
+    background-color: #0056cc; /* Azul um pouco mais escuro para o botão */
+    color: var(--white-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto; /* EMPURRA O BOTÃO PARA A PARTE INFERIOR DO CARD */
+    max-width: fit-content; /* Ajusta a largura ao conteúdo */
+}
+
+.behance-button i, .instagram-button i {
+    margin-left: 8px;
+    font-size: 1.1rem;
+}
+
+.behance-button:hover, .instagram-button:hover {
+    background-color: var(--light-blue-color);
+    transform: translateY(-2px);
+}
+
+/* Estilo específico para o botão do Instagram (opcional, para uma cor diferente) */
+.instagram-button {
+    background-color: #C13584; /* Cor do Instagram */
+}
+
+.instagram-button:hover {
+    background-color: #E1306C; /* Tom mais claro do Instagram no hover */
+}
+
+
+/* Swiper Navigation (Arrows) */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--light-blue-color) !important; /* Cor das setas */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 2rem !important; /* Tamanho das setas */
+}
+
+/* Swiper Pagination (Dots) */
+.swiper-pagination-bullet {
+    background-color: #666 !important; /* Cor padrão da bolinha de paginação */
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--light-blue-color) !important; /* Cor da bolinha ativa */
+}
+
+
+/* --- SEÇÃO DE CONTATO REESTRUTURADA --- */
+.contact-section {
+    display: flex;
+    flex-direction: column; /* Começa como coluna para centralizar o h2 */
+    align-items: center;
+    text-align: center; /* Centraliza o h2 */
+}
+
+.contact-section h2 {
+    text-align: center; /* Garante que o título "Contato" fique centralizado */
+    margin-bottom: 40px; /* Espaçamento abaixo do título */
+}
+
+.contact-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas: texto/título à esquerda, formulário/botões à direita */
+    gap: 4rem; /* Espaçamento entre as colunas */
+    width: 100%;
+    max-width: 1200px; /* Mesma largura máxima do carrossel */
+    align-items: flex-start; /* Alinha o conteúdo ao topo das colunas */
+    text-align: left; /* Reset do alinhamento para o grid content */
+}
+
+.contact-text-area {
+    /* Já contém h2 e p */
+}
+
+.contact-text-area h2 {
+    text-align: left; /* Alinha o título "Contato" à esquerda dentro da coluna */
+    margin-bottom: 20px; /* Ajuste o espaçamento abaixo do título aqui */
+}
+
+.contact-text-area p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    max-width: 500px; /* Limita a largura do parágrafo para melhor leitura */
+}
+
+.contact-form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre o formulário, o "OU" e os botões sociais */
+    align-items: center; /* Centraliza os elementos no eixo cruzado */
+    width: 100%; /* Garante que ocupe a largura da coluna */
+}
+
+.email-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px; /* Espaçamento entre os campos do formulário */
+    background-color: var(--card-background); /* Fundo similar aos cards de experiência */
+    padding: 30px;
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.email-form label {
+    font-weight: 600;
+    color: var(--white-color);
+    margin-bottom: -10px; /* Ajuste o espaçamento entre label e input */
+    font-size: 0.95rem;
+}
+
+.email-form input[type="text"],
+.email-form input[type="email"],
+.email-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #2a2a2a; /* Fundo dos inputs */
+    color: var(--white-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-form input[type="text"]:focus,
+.email-form input[type="email"]:focus,
+.email-form textarea:focus {
+    border-color: var(--light-blue-color);
+    box-shadow: 0 0 0 3px rgba(1, 115, 255, 0.3); /* Sombra suave ao focar */
+    outline: none;
+}
+
+.email-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px;
+}
+
+.send-email-button {
+    background-color: var(--light-blue-color);
+    color: var(--white-color);
+    padding: 14px 25px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre texto e ícone */
+    margin-top: 10px; /* Espaço acima do botão */
+    width: fit-content; /* Ajusta a largura ao conteúdo */
+    align-self: center; /* Centraliza o botão no formulário */
+}
+
+.send-email-button:hover {
+    background-color: #0056cc;
+    transform: translateY(-2px);
+}
+
+/* OU Separator - REVISADO */
+.or-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #aaa; /* Cor do texto "OU" */
+    margin: 15px 0; /* Espaçamento acima e abaixo do "OU" */
+    font-weight: 600;
+    font-size: 1.2rem;
+    width: 100%; /* Ocupa a largura total para as linhas se estenderem */
+    position: relative; /* Para que o z-index funcione no span */
+    justify-content: center; /* Centraliza o conteúdo (o span "OU") */
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    flex: 1; /* Permite que as linhas se estendam */
+    border-bottom: 1px solid #444; /* Cor da linha */
+    position: relative; /* Necessário para ajustar a linha */
+    top: 0; /* Garante que a linha esteja alinhada verticalmente */
+}
+
+.or-separator::before {
+    margin-right: 15px; /* Espaço antes do "OU" */
+}
+
+.or-separator::after {
+    margin-left: 15px; /* Espaço depois do "OU" */
+}
+
+.or-separator span {
+    background-color: var(--black-section-bg); /* Fundo que cobre a linha */
+    padding: 0 10px; /* Espaçamento ao redor do "OU" */
+    position: relative; /* Necessário para z-index */
+    z-index: 1; /* Garante que o "OU" fique sobre a linha */
+}
+
+
+.social-contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os botões */
+    gap: 15px; /* Espaçamento entre os botões */
+    width: 100%;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--white-color);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    min-width: 160px; /* Largura mínima para os botões sociais */
+    gap: 8px; /* Espaçamento entre ícone e texto */
+}
+
+.social-button i {
+    font-size: 1.2rem;
+}
+
+.social-button.whatsapp-button {
+    background-color: var(--whatsapp-green);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+.social-button.whatsapp-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
+    filter: brightness(1.1); /* Um leve brilho no hover */
+}
+
+.social-button.instagram-contact-button {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    box-shadow: 0 4px 10px rgba(225, 48, 108, 0.3);
+}
+.social-button.instagram-contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(225, 48, 108, 0.5);
+    filter: brightness(1.1);
+}
+
+.social-button.behance-contact-button {
+    background-color: var(--behance-blue);
+    box-shadow: 0 4px 10px rgba(5, 62, 255, 0.3);
+}
+.social-button.behance-contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(5, 62, 255, 0.5);
+    filter: brightness(1.1);
+}
+
+
+/* Rodapé */
+.footer {
+    background: linear-gradient(to right, var(--light-blue-color), var(--dark-blue-color)); /* Gradiente azul para o rodapé */
+    color: var(--white-color); /* Cor do texto do footer para branco */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    margin-top: 50px;
+    width: 100%; /* Ocupa 100% da largura do viewport */
+    /* Aplica o padding global também no footer para o conteúdo interno */
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Telas menores que 1400px (Laptops grandes e Monitores menores) */
+@media (max-width: 1400px) {
+    :root {
+        --section-padding-x: 10rem; /* Reduz padding global */
+    }
+}
+
+/* Telas menores que 1024px (Tablets e Laptops menores) */
+@media (max-width: 1024px) {
+    :root {
+        --section-padding-x: 5rem; /* Mais redução de padding global */
+    }
+
+    /* Reduz o padding vertical das seções */
+    section {
+        padding-top: 50px; /* Ajustado para ser menor */
+        padding-bottom: 50px; /* Ajustado para ser menor */
+    }
+
+    .logo img {
+        height: 70px; /* Ajusta logo em telas menores */
+    }
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.6rem;
+    }
+    .about-section.grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "image"
+            "content";
+        gap: 1.5rem;
+        text-align: center; /* Centraliza a seção sobre mim */
+    }
+    .about-section.grid-layout .about-content-right {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "about-main"
+            "details-row";
+    }
+    .about-section.grid-layout .about-details-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-section.grid-layout h3 {
+        text-align: center;
+    }
+    /* Centraliza os itens de habilidades e softwares quando a seção está centralizada */
+    .about-section.grid-layout .skills ul,
+    .about-section.grid-layout .softwares ul {
+        text-align: center;
+    }
+    .about-section.grid-layout .software-icons {
+        justify-content: center;
+    }
+    .about-section.grid-layout .about-image {
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    .about-section.grid-layout .about-text h2 {
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    /* Esconder botões de navegação do Swiper em telas menores */
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+
+    /* Contato responsivo para telas menores que 1024px */
+    .contact-content-wrapper {
+        grid-template-columns: 1fr; /* Uma coluna apenas */
+        gap: 3rem; /* Espaçamento entre as seções da coluna */
+    }
+    .contact-text-area h2,
+    .contact-text-area p {
+        text-align: center; /* Centraliza o texto e o título */
+        max-width: none; /* Remove a restrição de largura máxima */
+    }
+}
+
+/* Telas menores que 768px (Tablets e Mobile) */
+@media (max-width: 768px) {
+    :root {
+        --section-padding-x: 2rem; /* Mais redução de padding global */
+    }
+
+    /* Reduz ainda mais o padding vertical das seções */
+    section {
+        padding-top: 40px; /* Ajustado para ser menor */
+        padding-bottom: 40px; /* Ajustado para ser menor */
+    }
+
+    .navbar {
+        padding-left: var(--section-padding-x);
+        padding-right: var(--section-padding-x);
+    }
+    .logo img {
+        height: 60px;
+    }
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Esconde o menu fora da tela */
+        width: 70%; /* Largura do menu lateral */
+        height: 100vh;
+        background-color: var(--card-background); /* Alterado para a cor cinza mais clara */
+        padding-top: 100px;
+        transition: right 0.3s ease;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+    }
+    .nav-menu.active {
+        right: 0; /* Mostra o menu */
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+    .nav-menu ul li {
+        margin: 20px 0;
+        width: 100%;
+    }
+    .nav-menu ul li a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória */
+    }
+    .nav-menu ul li:last-child a {
+        border-bottom: none;
+    }
+    .menu-toggle {
+        display: flex; /* Mostra o botão hamburger */
+        z-index: 1001; /* Acima do menu */
+    }
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    section h2 {
+        font-size: 2.5rem;
+    }
+    .about-section.grid-layout {
+        gap: 1rem;
+    }
+    .about-section.grid-layout .about-image {
+        max-width: 250px;
+    }
+    .about-section.grid-layout .about-text p {
+        font-size: 1rem;
+    }
+    .about-section.grid-layout h3 {
+        font-size: 1.5rem;
+    }
+    .about-section.grid-layout .skills ul li {
+        font-size: 0.95rem;
+        padding: 6px 12px; /* Ajuste o padding para telas menores */
+    }
+    .experience-card {
+        padding: 20px;
+        min-height: 350px;
+    }
+    .card-title {
+        font-size: 1.2rem;
+    }
+    .card-description {
+        font-size: 0.9rem;
+    }
+    .behance-button, .instagram-button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+        min-width: unset;
+    }
+
+    /* Contato para mobile */
+    .contact-content-wrapper {
+        grid-template-columns: 1fr; /* Uma coluna apenas */
+        gap: 2rem;
+    }
+    .contact-text-area h2,
+    .contact-text-area p {
+        text-align: center; /* Centraliza o texto e o título */
+        max-width: none; /* Remove a restrição de largura máxima */
+    }
+    .email-form {
+        padding: 20px;
+    }
+    .email-form label,
+    .email-form input,
+    .email-form textarea {
+        font-size: 0.9rem;
+    }
+    .send-email-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    .or-separator {
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+    .social-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: unset;
+    }
+}
+
+/* Telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    :root {
+        --section-padding-x: 1rem; /* Padding mínimo */
+    }
+
+    /* Reduz ainda mais o padding vertical das seções */
+    section {
+        padding-top: 30px; /* Ajustado para ser menor */
+        padding-bottom: 30px; /* Ajustado para ser menor */
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    section h2 {
+        font-size: 2rem;
+    }
+    .about-section.grid-layout .about-image {
+        max-width: 180px;
+    }
+    .about-section.grid-layout .software-icons li img {
+        height: 30px;
+    }
+    .social-contact-buttons {
+        flex-direction: column; /* Botões sociais empilhados em telas muito pequenas */
+        align-items: center;
+    }
+    .social-button {
+        width: 80%; /* Ocupa mais largura quando empilhado */
+    }
+}
+
+/* Telas menores que 320px */
+@media (max-width: 320px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    section h2 {
+        font-size: 1.8rem;
+    }
+    .email-form label,
+    .email-form input,
+    .email-form textarea {
+        font-size: 0.85rem;
+    }
+}
