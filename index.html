@@ -23,9 +23,15 @@
             </button>
             <div class="nav-menu">
                 <ul>
-                    <li><a href="#about">Sobre mim</a></li>
-                    <li><a href="#experience">Experiências</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#about" data-lang-key="navAbout">Sobre mim</a></li>
+                    <li><a href="#experience" data-lang-key="navExperience">Experiências</a></li>
+                    <li><a href="#contact" data-lang-key="navContact">Contato</a></li>
+                    <!-- Botão de Troca de Idioma -->
+                    <li>
+                        <button id="language-toggle-button" class="language-toggle-button">
+                            English 🇺🇸
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -33,30 +39,27 @@
 
     <main>
         <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Olá, eu sou o <span class="highlight">Fabrício.</span></h1>
-                <p class="hero-subtitle">Editor de vídeos e Motion designer</p>
+            <div class="hero-content fade-in-element">
+                <h1 class="hero-title" data-lang-key="heroTitle">Olá, eu sou o <span class="highlight">Fabrício.</span></h1>
+                <p class="hero-subtitle" data-lang-key="heroSubtitle">Editor de vídeos e Motion designer</p>
             </div>
         </section>
 
-        <section id="about" class="about-section grid-layout">
+        <section id="about" class="about-section grid-layout fade-in-element">
             <div class="about-image">
                 <img src="images/perfil.png" alt="Foto de Fabrício Miranda">
             </div>
             <div class="about-content-right">
                 <div class="about-text">
-                    <h2>Sobre mim</h2>
-                    <p><strong class="lang-label">pt-BR</strong><br>
+                    <h2 data-lang-key="aboutTitle">Sobre mim</h2>
+                    <p data-lang-key="aboutText">
                         Me chamo <strong>Fabrício Miranda</strong>. Com 3 anos de experiência como <strong>Designer Gráfico</strong> e <strong>Editor de vídeos</strong>, minha paixão pelo <strong>audiovisual</strong> nasceu na infância. Hoje, domino diversas ferramentas e já desenvolvi uma vasta gama de projetos.
-                    </p>
-                    <p><strong class="lang-label">en-US</strong><br>
-                        My name is <strong>Fabrício Miranda</strong>. With 3 years of experience as a <strong>Graphic Designer</strong> and <strong>Video Editor</strong>, my passion for <strong>audiovisuals</strong> began in childhood. Today, I master various tools and have successfully completed a wide range of projects.
                     </p>
                 </div>
                 <div class="about-details-grid">
                     <div class="skills">
-                        <h3>Habilidades</h3>
-                        <ul>
+                        <h3 data-lang-key="skillsTitle">Habilidades</h3>
+                        <ul class="skills-list" data-lang-key="skillsList">
                             <li>Edição de Vídeo</li>
                             <li>Motion Graphics</li>
                             <li>Design Gráfico</li>
@@ -66,7 +69,7 @@
                         </ul>
                     </div>
                     <div class="softwares">
-                        <h3>Softwares</h3>
+                        <h3 data-lang-key="softwaresTitle">Softwares</h3>
                         <ul class="software-icons">
                             <li><img src="images/premiere-pro.png" alt="Premiere Pro"></li>
                             <li><img src="images/after-effects.png" alt="After Effects"></li>
@@ -78,14 +81,15 @@
             </div>
         </section>
 
-        <section id="experience" class="experience-section">
-            <h2>Experiências</h2>
+        <section id="experience" class="experience-section fade-in-element">
+            <h2 data-lang-key="experienceTitle">Experiências</h2>
             <div class="swiper experience-slider">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="1">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
-                                <i class="fas fa-pen-nib card-main-icon"></i>
+                                <!-- Ícone modificado para representar vídeo/edição -->
+                                <i class="fas fa-video card-main-icon"></i>
                             </div>
                             <div class="card-tools">
                                 <img src="images/photoshop.png" alt="Photoshop">
@@ -94,13 +98,14 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Animação de Interface</h4>
-                            <p class="card-description">Este projeto pessoal surgiu como um desafio após meus estudos em animação de interfaces. Todo o processo de criação e animação foi incrivelmente divertido e gratificante.</p>
-                            <a href="https://www.behance.net/gallery/228876691/Youtube-Music-Motion-Graphics" target="_blank" class="behance-button">Ver Projeto <i class="fab fa-behance"></i></a>
+                            <h4 class="card-title" data-lang-key="card1Title">Portfolio Edição/Motion</h4>
+                            <p class="card-description" data-lang-key="card1Description">Uma coleção de meus melhores trabalhos em edição de vídeo e motion design, demonstrando minha paixão e habilidade no audiovisual.</p>
+                            <!-- Link modificado -->
+                            <a href="https://www.behance.net/gallery/229305491/Edicao-de-Video-Portfolio" target="_blank" class="behance-button"><span data-lang-key="card1Button">Ver Projeto</span> <i class="fab fa-behance"></i></a>
                         </div>
                     </div>
 
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="2">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
                                 <i class="fas fa-bezier-curve card-main-icon"></i>
@@ -111,13 +116,13 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Mercado Livre</h4>
-                            <p class="card-description">Após concluir um curso de Motion Design, decidi me desafiar em um projeto pessoal. O resultado? Uma imersão de 10 horas de trabalho ininterrupto e gratificante neste projeto.</p>
-                            <a href="https://www.behance.net/gallery/221800797/Comercial-Mercado-Livre" target="_blank" class="behance-button">Ver Projeto <i class="fab fa-behance"></i></a>
+                            <h4 class="card-title" data-lang-key="card2Title">Mercado Livre</h4>
+                            <p class="card-description" data-lang-key="card2Description">Após concluir um curso de Motion Design, decidi me desafiar em um projeto pessoal. O resultado? Uma imersão de 10 horas de trabalho ininterrupto e gratificante neste projeto.</p>
+                            <a href="https://www.behance.net/gallery/221800797/Comercial-Mercado-Livre" target="_blank" class="behance-button"><span data-lang-key="card2Button">Ver Projeto</span> <i class="fab fa-behance"></i></a>
                         </div>
                     </div>
 
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="3">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
                                 <i class="fab fa-tiktok card-main-icon"></i>
@@ -129,13 +134,13 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Vídeos curtos & Design</h4>
-                            <p class="card-description">Muitos dos meus clientes atuais aproveitam o poder dos vídeos curtos, e, com meu suporte, investem com sucesso para impulsionar sua presença nas redes sociais.</p>
-                            <a href="https://www.behance.net/gallery/221792861/Nutricionista-Social-Media-e-Edicao-Raquel-Thomaz" target="_blank" class="behance-button">Ver Projeto <i class="fab fa-behance"></i></a>
+                            <h4 class="card-title" data-lang-key="card3Title">Vídeos curtos & Design</h4>
+                            <p class="card-description" data-lang-key="card3Description">Muitos dos meus clientes atuais aproveitam o poder dos vídeos curtos, e, com meu suporte, investem com sucesso para impulsionar sua presença nas redes sociais.</p>
+                            <a href="https://www.behance.net/gallery/221792861/Nutricionista-Social-Media-e-Edicao-Raquel-Thomaz" target="_blank" class="behance-button"><span data-lang-key="card3Button">Ver Projeto</span> <i class="fab fa-behance"></i></a>
                         </div>
                     </div>
 
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="4">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
                                 <i class="fas fa-scissors card-main-icon"></i>
@@ -145,13 +150,13 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Cloves Barbeiro</h4>
-                            <p class="card-description">Com meu fiel companheiro, Gimbal, fui contratado por um barbeiro para criar um vídeo tutorial sobre como agendar um corte, além de uma filmagem dinâmica de um corte de cabelo.</p>
-                            <a href="https://www.instagram.com/reel/DC0FBSbPagB/?utm_source=ig_web_copy_link&igsh=NTZrN3ZmbWJoYWNo" target="_blank" class="instagram-button">Ver Reels <i class="fab fa-instagram"></i></a>
+                            <h4 class="card-title" data-lang-key="card4Title">Cloves Barbeiro</h4>
+                            <p class="card-description" data-lang-key="card4Description">Com meu fiel companheiro, Gimbal, fui contratado por um barbeiro para criar um vídeo tutorial sobre como agendar um corte, além de uma filmagem dinâmica de um corte de cabelo.</p>
+                            <a href="https://www.instagram.com/reel/DC0FBSbPagB/?utm_source=ig_web_copy_link&igsh=NTZrN3ZmbWJoYWNo" target="_blank" class="instagram-button"><span data-lang-key="card4Button">Ver Reels</span> <i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
 
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="5">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
                                 <i class="fas fa-dumbbell card-main-icon"></i>
@@ -161,13 +166,13 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Yan Gabriel</h4>
-                            <p class="card-description">O Personal Trainer Yan Gabriel precisava de um Reels autêntico para dinamizar seu Instagram e atrair novos clientes para seus serviços.</p>
-                            <a href="https://www.instagram.com/reel/DCRiE3eP851/?utm_source=ig_web_copy_link&igsh=aDhjdmR3dWoxdGQ5" target="_blank" class="instagram-button">Ver Reels <i class="fab fa-instagram"></i></a>
+                            <h4 class="card-title" data-lang-key="card5Title">Yan Gabriel</h4>
+                            <p class="card-description" data-lang-key="card5Description">O Personal Trainer Yan Gabriel precisava de um Reels autêntico para dinamizar seu Instagram e atrair novos clientes para seus serviços.</p>
+                            <a href="https://www.instagram.com/reel/DCRiE3eP851/?utm_source=ig_web_copy_link&igsh=aDhjdmR3dWoxdGQ5" target="_blank" class="instagram-button"><span data-lang-key="card5Button">Ver Reels</span> <i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
 
-                    <div class="swiper-slide experience-card">
+                    <div class="swiper-slide experience-card" data-card-id="6">
                         <div class="card-header">
                             <div class="card-icon-wrapper">
                                 <i class="fas fa-microphone-alt card-main-icon"></i>
@@ -177,9 +182,9 @@
                             </div>
                         </div>
                         <div class="card-content">
-                            <h4 class="card-title">Destaques de Evento</h4>
-                            <p class="card-description">Para celebrar a conquista de seu 10º certificado profissional, o cliente buscava um vídeo que mostrasse os bastidores e a preparação para este marco importante em sua carreira.</p>
-                            <a href="https://www.instagram.com/reel/DJ1Iwl-Okvq/?utm_source=ig_web_copy_link&igsh=MTVhd2prZ3V0azEwZQ==" target="_blank" class="instagram-button">Ver Reels <i class="fab fa-instagram"></i></a>
+                            <h4 class="card-title" data-lang-key="card6Title">Destaques de Evento</h4>
+                            <p class="card-description" data-lang-key="card6Description">Para celebrar a conquista de seu 10º certificado profissional, o cliente buscava um vídeo que mostrasse os bastidores e a preparação para este marco importante em sua carreira.</p>
+                            <a href="https://www.instagram.com/reel/DJ1Iwl-Okvq/?utm_source=ig_web_copy_link&igsh=MTVhd2prZ3V0azE0ZQ==" target="_blank" class="instagram-button"><span data-lang-key="card6Button">Ver Reels</span> <i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
 
@@ -191,35 +196,35 @@
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
+        <section id="contact" class="contact-section fade-in-element">
             <div class="contact-content-wrapper">
                 <div class="contact-text-area">
-                    <h2>Contato</h2>
-                    <p>Pronto para transformar suas ideias em vídeos impactantes e designs memoráveis? Seja para um projeto específico, uma parceria de longo prazo ou apenas para tirar dúvidas, estou aqui para ajudar. Vamos criar algo incrível juntos!</p>
+                    <h2 data-lang-key="contactTitle">Contato</h2>
+                    <p data-lang-key="contactText">Pronto para transformar suas ideias em vídeos impactantes e designs memoráveis? Seja para um projeto específico, uma parceria de longo prazo ou apenas para tirar dúvidas, estou aqui para ajudar. Vamos criar algo incrível juntos!</p>
                 </div>
                 <div class="contact-form-area">
                     <form action="https://formspree.io/f/mqabwlwz" method="POST" class="email-form">
-                        <label for="name">Seu Nome:</label>
-                        <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+                        <label for="name" data-lang-key="formNameLabel">Seu Nome:</label>
+                        <input type="text" id="name" name="name" required placeholder="Digite seu nome" data-lang-key-placeholder="formNamePlaceholder">
 
-                        <label for="email">Seu E-mail:</label>
-                        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                        <label for="email" data-lang-key="formEmailLabel">Seu E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail" data-lang-key-placeholder="formEmailPlaceholder">
 
-                        <label for="message">Sua Mensagem:</label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Descreva seu projeto ou dúvida..."></textarea>
+                        <label for="message" data-lang-key="formMessageLabel">Sua Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Descreva seu projeto ou dúvida..." data-lang-key-placeholder="formMessagePlaceholder"></textarea>
 
-                        <button type="submit" class="send-email-button">Enviar E-mail <i class="fas fa-paper-plane"></i></button>
+                        <button type="submit" class="send-email-button"><span data-lang-key="sendEmailButton">Enviar E-mail</span> <i class="fas fa-paper-plane"></i></button>
                     </form>
-                    <div class="or-separator"><span>OU</span></div>
+                    <div class="or-separator"><span data-lang-key="orSeparator">OU</span></div>
                     <div class="social-contact-buttons">
                         <a href="https://wa.me/5579988748411" target="_blank" class="social-button whatsapp-button">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
+                            <i class="fab fa-whatsapp"></i> <span data-lang-key="whatsappButton">WhatsApp</span>
                         </a>
                         <a href="https://www.instagram.com/fabricio.psd/" target="_blank" class="social-button instagram-contact-button">
-                            <i class="fab fa-instagram"></i> Instagram
+                            <i class="fab fa-instagram"></i> <span data-lang-key="instagramButton">Instagram</span>
                         </a>
                         <a href="https://www.behance.net/ofabriciomiranda" target="_blank" class="social-button behance-contact-button">
-                            <i class="fab fa-behance"></i> Behance
+                            <i class="fab fa-behance"></i> <span data-lang-key="behanceButton">Behance</span>
                         </a>
                     </div>
                 </div>
@@ -228,7 +233,7 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 Fabrício Miranda. Todos os direitos reservados.</p>
+        <p data-lang-key="footerText">&copy; 2025 Fabrício Miranda. Todos os direitos reservados.</p>
     </footer>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

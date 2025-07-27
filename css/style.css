@@ -68,6 +68,7 @@ body {
 .nav-menu ul {
     list-style: none; /* Remove marcadores de lista */
     display: flex; /* Itens do menu em linha */
+    align-items: center; /* Alinha verticalmente os itens do menu e o botão */
 }
 
 .nav-menu ul li {
@@ -90,6 +91,30 @@ body {
     outline: 2px solid var(--light-blue-color); /* Outline azul claro no hover */
     padding: 5px 10px; /* Adiciona padding lateral no hover */
 }
+
+/* Estilo para o novo botão de troca de idioma */
+.language-toggle-button {
+    background-color: rgba(255, 255, 255, 0.2); /* Branco transparente (20%) */
+    border: 1px solid var(--white-color); /* Outline branco de 1px */
+    border-radius: 50px; /* Bem arredondado */
+    color: var(--white-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaçamento entre texto e emoji */
+    margin-left: 40px; /* Mantém o espaçamento com o último item da navbar */
+}
+
+.language-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Um pouco menos transparente no hover */
+    border-color: var(--white-color); /* Mantém a borda branca no hover */
+    transform: translateY(-2px); /* Efeito de levantar */
+}
+
 
 /* Botão de menu para mobile (inicialmente escondido) */
 .menu-toggle {
@@ -255,7 +280,7 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     grid-area: content; /* Ocupa a área definida no grid principal */
     display: grid;
     grid-template-columns: 1fr; /* Uma coluna para empilhar os elementos */
-    grid-template-rows: auto auto auto; /* Linhas para about-text, skills-section e softwares-section */
+    grid-template-rows: auto auto; /* Linhas para about-text, skills-section e softwares-section */
     grid-template-areas:
         "about-main"
         "details-row"; /* about-details-grid agora será a "details-row" */
@@ -266,35 +291,6 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     grid-area: about-main; /* Posiciona o texto "Sobre mim" */
 }
 
-/* Novo estilo para as etiquetas de idioma */
-.lang-label {
-    color: var(--light-blue-color); /* Para que a etiqueta tenha a cor de destaque */
-    font-size: 0.9rem; /* Um pouco menor que o texto principal */
-    margin-bottom: 5px; /* Espaçamento abaixo da etiqueta */
-    display: inline-block; /* Para que margin-bottom funcione */
-}
-
-.about-section.grid-layout .about-details-grid {
-    grid-area: details-row; /* Posiciona o grid de detalhes */
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas para Habilidades e Softwares */
-    gap: 2rem; /* Espaçamento entre Habilidades e Softwares */
-}
-
-.about-section.grid-layout .skills {
-    /* grid-area já definido no about-details-grid */
-}
-
-.about-section.grid-layout .softwares {
-    /* grid-area já definido no about-details-grid */
-}
-
-/* O h2 da seção "Sobre mim" usará o estilo geral de h2 */
-.about-section.grid-layout .about-text h2 {
-    text-align: left; /* Alinha o título "Sobre mim" à esquerda */
-}
-
-
 .about-section.grid-layout .lang-text {
     margin-bottom: 20px;
 }
@@ -303,6 +299,8 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     font-size: 1.1rem; /* Consistência com o tamanho do texto */
     margin-bottom: 10px;
     max-width: none; /* Remove a restrição de largura máxima do parágrafo */
+    /* Ajuste para ocupar o espaço sem as duas opções de idioma */
+    line-height: 1.8; /* Aumenta o espaçamento entre as linhas para melhor leitura */
 }
 
 
@@ -357,8 +355,8 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
 
 /* Estilo para as seções EXPERIÊNCIAS e CONTATO (mantido centralizado) */
 .experience-section, .contact-section {
-    align-items: center; /* Mantém o conteúdo centralizado */
-    text-align: center; /* Mantém o texto centralizado */
+    align-items: center;
+    text-align: center;
 }
 
 /* **AJUSTES PARA O SWIPER** */
@@ -543,7 +541,7 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     flex-direction: column;
     gap: 20px; /* Espaçamento entre o formulário, o "OU" e os botões sociais */
     align-items: center; /* Centraliza os elementos no eixo cruzado */
-    width: 100%; /* Garante que ocupe a largura da coluna */
+    width: 100%;
 }
 
 .email-form {
@@ -726,6 +724,21 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     padding-right: var(--section-padding-x);
 }
 
+/* --- Animação de Fade-in ao Scroll --- */
+/* Estado inicial dos elementos que vão animar */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px); /* Começa um pouco abaixo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição suave */
+}
+
+/* Estado final quando o elemento está visível */
+.fade-in-element.is-visible {
+    opacity: 1;
+    transform: translateY(0); /* Volta para a posição original */
+}
+
+
 /* --- Media Queries para Responsividade --- */
 
 /* Telas menores que 1400px (Laptops grandes e Monitores menores) */
@@ -756,8 +769,9 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     .hero-subtitle {
         font-size: 1.6rem;
     }
+    /* Ajustes para a seção "Sobre mim" em telas menores que 1024px */
     .about-section.grid-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Uma coluna para imagem e conteúdo */
         grid-template-areas:
             "image"
             "content";
@@ -765,14 +779,18 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
         text-align: center; /* Centraliza a seção sobre mim */
     }
     .about-section.grid-layout .about-content-right {
-        grid-template-columns: 1fr;
+        /* Mantém as regras internas do grid-layout para telas maiores que 768px */
+        grid-template-columns: 1fr; /* Garante que about-main e details-row continuem empilhados */
         grid-template-areas:
             "about-main"
             "details-row";
     }
+    /* Habilidades e Softwares continuam lado a lado até 768px */
     .about-section.grid-layout .about-details-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr; /* Habilidades e Softwares lado a lado */
+        gap: 2rem; /* Espaçamento entre eles */
     }
+
     .about-section.grid-layout h3 {
         text-align: center;
     }
@@ -811,6 +829,12 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     .contact-text-area p {
         text-align: center; /* Centraliza o texto e o título */
         max-width: none; /* Remove a restrição de largura máxima */
+    }
+
+    /* Ajuste para o botão de idioma no menu mobile */
+    .nav-menu ul li .language-toggle-button {
+        margin-left: 0; /* Remove a margem lateral */
+        margin-top: 20px; /* Adiciona margem superior para separar dos links */
     }
 }
 
@@ -867,6 +891,21 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     .nav-menu ul li:last-child a {
         border-bottom: none;
     }
+    /* Ajusta o último item da lista para não ter borda inferior */
+    .nav-menu ul li:last-child:not(:has(.language-toggle-button)) a {
+        border-bottom: none;
+    }
+    /* Estilo para o botão de idioma dentro do menu mobile */
+    .nav-menu ul li .language-toggle-button {
+        margin: 20px auto; /* Centraliza horizontalmente e adiciona margem vertical */
+        width: fit-content; /* Ajusta a largura ao conteúdo */
+        display: flex; /* Garante que o flexbox funcione para centralização */
+        justify-content: center; /* Centraliza o conteúdo (texto e emoji) */
+        border-bottom: none; /* Remove a borda inferior que estava sendo aplicada */
+        border-radius: 50px; /* Garante que o arredondamento seja mantido */
+    }
+
+
     .menu-toggle {
         display: flex; /* Mostra o botão hamburger */
         z-index: 1001; /* Acima do menu */
@@ -879,9 +918,6 @@ section:nth-of-type(odd) { /* Seções ímpares (ex: Sobre Mim se for a 1ª) */
     }
     section h2 {
         font-size: 2.5rem;
-    }
-    .about-section.grid-layout {
-        gap: 1rem;
     }
     .about-section.grid-layout .about-image {
         max-width: 250px;
