@@ -61,7 +61,6 @@ body {
 
 .logo img {
     height: 90px; /* Logo aumentada para 90px */
-    filter: brightness(0) invert(1); /* Deixa a logo branca para contrastar com o fundo escuro */
     transition: height 0.3s ease; /* Transição suave no tamanho */
 }
 
